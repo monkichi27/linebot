@@ -18,11 +18,21 @@ if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
 
         $reply_message = '';
-        $reply_token = $event['replyToken'];
+        $reply_token = '';
+        if(isset($event['source']['userId']){
+            $reply_token = $event['source']['userId'];
+         }
+         else if(isset($event['source']['groupId'])){
+            $reply_token = $event['source']['groupId'];
+         }
+         else if(isset($event['source']['room'])){
+            $reply_token = $event['source']['room'];
+         }
+        //$reply_token = $event['replyToken'];
 
         $text = $event['message']['text'];
         $arrayPostData = array();
-        $arrayPostData['replyToken'] = $reply_token;
+        $arrayPostData['to'] = $reply_token;
 
         if($text == "pic"){
             $image_url = "https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
