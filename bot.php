@@ -37,18 +37,14 @@ if ( sizeof($request_array['events']) > 0 ) {
             //$errors = $response['response']['errors'];
             //$data = $response['response']['data'][0];
             $url = 'https://mos.modernform.co.th/mos-client/item?site=MF&item=5-M-COS-AC-CM120-BK';
-            $ch = curl_init($url);
-            curl_setopt($ch, CURLOPT_HTTPGET, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            $response_json = curl_exec($ch);
-            curl_close($ch);
-            $response = json_decode($response_json, true);
+            $json = file_get_contents($url);
+            $jsondata =  json_decode($json, true);
             $txt = '';
-            foreach($response as $value){
+            foreach($jsondata as $value){
                 $txt = $value['description'];
             }
 
-            $arrayPostData['messages'][0]['text'] = $text;
+            $arrayPostData['messages'][0]['text'] = $txt;
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
