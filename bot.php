@@ -37,7 +37,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             $errors = $response['response']['errors'];
             $data = $response['response']['data'][0];
 
-            $arrayPostData['messages'][0]['text'] = $response;
+            $arrayPostData['messages'][0]['text'] = $text;
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
