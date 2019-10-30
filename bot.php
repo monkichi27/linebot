@@ -19,7 +19,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $reply_message = '';
         $id = '';
-        if(isset($event['source']['userId']){
+        /* if(isset($event['source']['userId']){
             $id = $event['source']['userId'];
          }
          else if(isset($event['source']['groupId'])){
@@ -27,7 +27,7 @@ if ( sizeof($request_array['events']) > 0 ) {
          }
          else if(isset($event['source']['room'])){
             $id = $event['source']['room'];
-         }
+         } */
        
 
         $text = $event['message']['text'];
@@ -95,7 +95,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             //    $txt = $value['description'];
             //}
 
-            $arrayPostData['messages'][0]['text'] = $text.'  '.$id;
+            $arrayPostData['messages'][0]['text'] = $text.'  '.$event['source']['userId'];
 
             /* $arrayPostData1['to'] = $id;
             $arrayPostData1['messages'][0]['type'] = "text";
