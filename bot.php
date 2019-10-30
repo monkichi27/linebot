@@ -18,20 +18,21 @@ if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
 
         $reply_message = '';
-        $reply_token = '';
+        $id = '';
         if(isset($event['source']['userId']){
-            $reply_token = $event['source']['userId'];
+            $id = $event['source']['userId'];
          }
          else if(isset($event['source']['groupId'])){
-            $reply_token = $event['source']['groupId'];
+            $id = $event['source']['groupId'];
          }
          else if(isset($event['source']['room'])){
-            $reply_token = $event['source']['room'];
+            $id = $event['source']['room'];
          }
-        //$reply_token = $event['replyToken'];
+       
 
         $text = $event['message']['text'];
         $arrayPostData = array();
+        $reply_token = $event['replyToken'];
         $arrayPostData['replyToken'] = $reply_token;
 
         if($text == "pic"){
@@ -94,6 +95,14 @@ if ( sizeof($request_array['events']) > 0 ) {
             //}
 
             $arrayPostData['messages'][0]['text'] = $text;
+
+            $arrayPostData1['to'] = $id;
+            $arrayPostData1['messages'][0]['type'] = "text";
+            $arrayPostData1['messages'][0]['text'] = "สวัสดีจ้าาา";
+            $arrayPostData1['messages'][1]['type'] = "sticker";
+            $arrayPostData1['messages'][1]['packageId'] = "2";
+            $arrayPostData1['messages'][1]['stickerId'] = "34";
+            pushMsg($POST_HEADER,$arrayPostData);
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
@@ -105,7 +114,19 @@ if ( sizeof($request_array['events']) > 0 ) {
 
 echo "OK";
 
-
+function pushMsg($arrayHeader,$arrayPostData){
+    $strUrl = "https://api.line.me/v2/bot/message/push";
+    $ch = curl_init();
+    curl_setopt($ch, CURLOPT_URL,$strUrl);
+    curl_setopt($ch, CURLOPT_HEADER, false);
+    curl_setopt($ch, CURLOPT_POST, true);
+    curl_setopt($ch, CURLOPT_HTTPHEADER, $arrayHeader);
+    curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($arrayPostData));
+    curl_setopt($ch, CURLOPT_RETURNTRANSFER,true);
+    curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+    $result = curl_exec($ch);
+    curl_close ($ch);
+ }
 
 
 function send_reply_message($url, $post_header, $post_body)
