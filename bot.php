@@ -44,7 +44,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             curl_close($ch);
             $response=json_decode($response_json, true);
 
-            $arrayPostData['messages'][0]['text'] = $response;
+            $arrayPostData['messages'][0]['text'] = $text;
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
