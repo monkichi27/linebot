@@ -29,6 +29,21 @@ if ( sizeof($request_array['events']) > 0 ) {
             $arrayPostData['messages'][0]['type'] = "image";
             $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
             $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
+        } else if($text == "ราคาน้ำมัน"){
+            $client = new SoapClient("http://www.pttplc.com/webservice/pttinfo.asmx?wsdl");
+            //echo("func");
+            var_dump($client->__getFunctions());
+            //echo("types");
+            var_dump($client->__getTypes());
+            $params = array(
+            'Language' => 'th' // 'en' for English result
+            );
+            $response = $client->CurrentOilPrice($params);
+            
+
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = $response;
+            
         }else{
             $arrayPostData['messages'][0]['type'] = "text";
 
@@ -36,15 +51,15 @@ if ( sizeof($request_array['events']) > 0 ) {
             //$response = json_decode($get_data, true);
             //$errors = $response['response']['errors'];
             //$data = $response['response']['data'][0];
-            $url = 'https://dev.modernform.co.th/qn/rs/api/';
-            $json = file_get_contents($url);
+           // $url = 'https://dev.modernform.co.th/qn/rs/api/';
+            //$json = file_get_contents($url);
            // $jsondata =  json_decode($json, true);
            // $txt = '';
            // foreach($jsondata as $value){
             //    $txt = $value['description'];
             //}
 
-            $arrayPostData['messages'][0]['text'] = $json;
+            $arrayPostData['messages'][0]['text'] = $text;
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
