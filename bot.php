@@ -42,9 +42,9 @@ if ( sizeof($request_array['events']) > 0 ) {
             curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
             $response_json = curl_exec($ch);
             curl_close($ch);
-            $response=json_decode($response_json, true);
+            $response = json_decode($response_json, true);
 
-            $arrayPostData['messages'][0]['text'] = $text;
+            $arrayPostData['messages'][0]['text'] = $response['description'];
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
