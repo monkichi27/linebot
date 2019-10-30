@@ -24,15 +24,15 @@ if ( sizeof($request_array['events']) > 0 ) {
         $dataTxt;
         $image_url = "https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
         if($text == "pic"){
-            dataTxt => [['type' => 'image', 'originalContentUrl' => $image_url, 'previewImageUrl' = > $image_url]];
+            $dataTxt => [['type' => 'image', 'originalContentUrl' => $image_url, 'previewImageUrl' = > $image_url]];
         }else{
-            dataTxt => [['type' => 'text', 'text' => $text]];
+            $dataTxt => [['type' => 'text', 'text' => $text]];
         }
         $data = [
             'replyToken' => $reply_token,
             // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]
             //'messages' => [['type' => 'text', 'text' => $text]]
-            'messages' => dataTxt
+            'messages' => $dataTxt
         ];
         $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
 
