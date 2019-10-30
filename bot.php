@@ -32,6 +32,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $text = $event['message']['text'];
         $arrayPostData = array();
+        $arrayPostData1 = array();
         $reply_token = $event['replyToken'];
         $arrayPostData['replyToken'] = $reply_token;
 
