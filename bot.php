@@ -61,7 +61,7 @@ if ( sizeof($request_array['events']) > 0 ) {
          
            // ถ้าไม่มีราคาก็ไม่ต้องแสดงผล เนื่องจากมีบางรายการไม่มีราคา   
            if($val->PRICE != ''){
-                $txt = txt.$val->PRODUCT.'  '.$val->PRICE;
+                $txt = $txt.$val->PRODUCT.'  '.$val->PRICE;
             }
 
           }
