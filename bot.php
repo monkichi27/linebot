@@ -48,7 +48,7 @@ if ( sizeof($request_array['events']) > 0 ) {
                 $txt = $value['description'];
             }
 
-            $arrayPostData['messages'][0]['text'] = $txt;
+            $arrayPostData['messages'][0]['text'] = $text;
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
