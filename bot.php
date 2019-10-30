@@ -32,7 +32,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $text = $event['message']['text'];
         $arrayPostData = array();
-        $arrayPostData['to'] = $reply_token;
+        $arrayPostData['replyToken'] = $reply_token;
 
         if($text == "pic"){
             $image_url = "https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
