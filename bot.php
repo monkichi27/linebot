@@ -36,7 +36,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_token = $event['replyToken'];
         $arrayPostData['replyToken'] = $reply_token;
 
-        if($text == "pic"){
+        if($text == "แมว"){
             $image_url = "https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
             $arrayPostData['messages'][0]['type'] = "image";
             $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
@@ -95,7 +95,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             //    $txt = $value['description'];
             //}
 
-            $arrayPostData['messages'][0]['text'] = json_encode($request_array);
+            $arrayPostData['messages'][0]['text'] = $text;
 
             /* $arrayPostData1['to'] = $id;
             $arrayPostData1['messages'][0]['type'] = "text";
