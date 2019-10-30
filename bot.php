@@ -36,7 +36,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             //$response = json_decode($get_data, true);
             //$errors = $response['response']['errors'];
             //$data = $response['response']['data'][0];
-            $url = 'https://dev.modernform.co.th/mdt/rs/check/check-vali';
+            $url = 'https://dev.modernform.co.th/qn/rs/api/';
             $json = file_get_contents($url);
            // $jsondata =  json_decode($json, true);
            // $txt = '';
