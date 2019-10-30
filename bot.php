@@ -31,19 +31,13 @@ if ( sizeof($request_array['events']) > 0 ) {
             $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
         } else if($text == "ราคาน้ำมัน"){
             $client = new SoapClient("http://www.pttplc.com/webservice/pttinfo.asmx?wsdl");
-            //echo("func");
-            var_dump($client->__getFunctions());
-            //echo("types");
-            var_dump($client->__getTypes());
-            $params = array(
-            'Language' => 'th' // 'en' for English result
-            );
-            $response = $client->CurrentOilPrice($params);
-            
+            $methodName = 'CurrentOilPrice';
+            $params = array('Language'=>'TH');
+            $soapAction = 'http://www.pttplc.com/ptt_webservice/CurrentOilPrice';
+            $objectResult = $client->__soapCall($methodName, array('parameters' => $params), array('soapaction' => $soapAction));
 
             $arrayPostData['messages'][0]['type'] = "text";
-            $arrayPostData['messages'][0]['text'] = $response;
-            
+            $arrayPostData['messages'][0]['text'] = $objectResult->CurrentOilPriceResult;
         }else{
             $arrayPostData['messages'][0]['type'] = "text";
 
