@@ -19,7 +19,7 @@ if ( sizeof($request_array['events']) > 0 ) {
 
         $reply_message = '';
         $id = '';
-        /* if(isset($event['source']['userId']){
+        if(isset($event['source']['userId'])){
             $id = $event['source']['userId'];
          }
          else if(isset($event['source']['groupId'])){
@@ -27,7 +27,7 @@ if ( sizeof($request_array['events']) > 0 ) {
          }
          else if(isset($event['source']['room'])){
             $id = $event['source']['room'];
-         } */
+         }
        
 
         $text = $event['message']['text'];
@@ -97,13 +97,13 @@ if ( sizeof($request_array['events']) > 0 ) {
 
             $arrayPostData['messages'][0]['text'] = $text.'  '.$event['source']['userId'];
 
-            /* $arrayPostData1['to'] = $id;
+            $arrayPostData1['to'] = $id;
             $arrayPostData1['messages'][0]['type'] = "text";
             $arrayPostData1['messages'][0]['text'] = "สวัสดีจ้าาา";
             $arrayPostData1['messages'][1]['type'] = "sticker";
             $arrayPostData1['messages'][1]['packageId'] = "2";
             $arrayPostData1['messages'][1]['stickerId'] = "34";
-            pushMsg($POST_HEADER,$arrayPostData1); */
+            pushMsg($POST_HEADER,$arrayPostData1);
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
