@@ -32,12 +32,19 @@ if ( sizeof($request_array['events']) > 0 ) {
         }else{
             $arrayPostData['messages'][0]['type'] = "text";
 
-            $get_data = callAPI('GET', 'https://mos.modernform.co.th/mos-client/item?site=MF&item=5-M-COS-AC-CM120-BK', false);
-            $response = json_decode($get_data, true);
-            $errors = $response['response']['errors'];
-            $data = $response['response']['data'][0];
+            //$get_data = callAPI('GET', 'https://mos.modernform.co.th/mos-client/item?site=MF&item=5-M-COS-AC-CM120-BK', false);
+            //$response = json_decode($get_data, true);
+            //$errors = $response['response']['errors'];
+            //$data = $response['response']['data'][0];
+            $url = 'https://mos.modernform.co.th/mos-client/item?site=MF&item=5-M-COS-AC-CM120-BK';
+            $ch = curl_init($url);
+            curl_setopt($ch, CURLOPT_HTTPGET, true);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+            $response_json = curl_exec($ch);
+            curl_close($ch);
+            $response=json_decode($response_json, true);
 
-            $arrayPostData['messages'][0]['text'] = $text;
+            $arrayPostData['messages'][0]['text'] = $response;
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
