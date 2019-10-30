@@ -18,7 +18,7 @@ if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
 
         $reply_message = '';
-        /* $id = '';
+        $id = '';
         if(isset($event['source']['userId']){
             $id = $event['source']['userId'];
          }
@@ -27,7 +27,7 @@ if ( sizeof($request_array['events']) > 0 ) {
          }
          else if(isset($event['source']['room'])){
             $id = $event['source']['room'];
-         } */
+         }
        
 
         $text = $event['message']['text'];
@@ -95,7 +95,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             //    $txt = $value['description'];
             //}
 
-            $arrayPostData['messages'][0]['text'] = $text;
+            $arrayPostData['messages'][0]['text'] = $text.'  '.$id;
 
             /* $arrayPostData1['to'] = $id;
             $arrayPostData1['messages'][0]['type'] = "text";
