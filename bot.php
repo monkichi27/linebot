@@ -18,7 +18,7 @@ if ( sizeof($request_array['events']) > 0 ) {
     foreach ($request_array['events'] as $event) {
 
         $reply_message = '';
-        $id = '';
+      /*   $id = '';
         if(isset($event['source']['userId']){
             $id = $event['source']['userId'];
          }
@@ -27,7 +27,7 @@ if ( sizeof($request_array['events']) > 0 ) {
          }
          else if(isset($event['source']['room'])){
             $id = $event['source']['room'];
-         }
+         } */
        
 
         $text = $event['message']['text'];
@@ -41,8 +41,8 @@ if ( sizeof($request_array['events']) > 0 ) {
             $arrayPostData['messages'][0]['type'] = "image";
             $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
             $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
-        } else if($text == "ราคาน้ำมัน"){
-            $client = new SoapClient("http://www.pttplc.com/webservice/pttinfo.asmx?WSDL", // URL ของ webservice
+        /*} else if($text == "ราคาน้ำมัน"){
+             $client = new SoapClient("http://www.pttplc.com/webservice/pttinfo.asmx?WSDL", // URL ของ webservice
 		    	array(
 			           "trace"      => 1,		// enable trace to view what is happening
 			           "exceptions" => 0,		// disable exceptions
@@ -79,7 +79,7 @@ if ( sizeof($request_array['events']) > 0 ) {
           }
 
             $arrayPostData['messages'][0]['type'] = "text";
-            $arrayPostData['messages'][0]['text'] = $txt;
+            $arrayPostData['messages'][0]['text'] = $txt; */
         }else{
             $arrayPostData['messages'][0]['type'] = "text";
 
@@ -97,13 +97,13 @@ if ( sizeof($request_array['events']) > 0 ) {
 
             $arrayPostData['messages'][0]['text'] = $text;
 
-            $arrayPostData1['to'] = $id;
+            $arrayPostData1['to']/*  = $id;
             $arrayPostData1['messages'][0]['type'] = "text";
             $arrayPostData1['messages'][0]['text'] = "สวัสดีจ้าาา";
             $arrayPostData1['messages'][1]['type'] = "sticker";
             $arrayPostData1['messages'][1]['packageId'] = "2";
             $arrayPostData1['messages'][1]['stickerId'] = "34";
-            pushMsg($POST_HEADER,$arrayPostData1);
+            pushMsg($POST_HEADER,$arr */ayPostData1);
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
