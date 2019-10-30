@@ -36,15 +36,15 @@ if ( sizeof($request_array['events']) > 0 ) {
             //$response = json_decode($get_data, true);
             //$errors = $response['response']['errors'];
             //$data = $response['response']['data'][0];
-            $url = 'https://mos.modernform.co.th/mos-client/item?site=MF&item=5-M-COS-AC-CM120-BK';
+            $url = 'https://dev.modernform.co.th/mdt/rs/check/check-vali';
             $json = file_get_contents($url);
-            $jsondata =  json_decode($json, true);
+           // $jsondata =  json_decode($json, true);
            // $txt = '';
            // foreach($jsondata as $value){
             //    $txt = $value['description'];
             //}
 
-            $arrayPostData['messages'][0]['text'] = $jsondata[0]["description"];
+            $arrayPostData['messages'][0]['text'] = $json;
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
