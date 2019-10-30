@@ -21,20 +21,19 @@ if ( sizeof($request_array['events']) > 0 ) {
         $reply_token = $event['replyToken'];
 
         $text = $event['message']['text'];
-        $dataTxt;
-        $image_url = "https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
+        $arrayPostData = array();
+        $arrayPostData['replyToken'] = $reply_token;
+
         if($text == "pic"){
-            $dataTxt => [['type' => 'image', 'originalContentUrl' => $image_url, 'previewImageUrl' = > $image_url]];
+            $image_url = "https://i.pinimg.com/originals/cc/22/d1/cc22d10d9096e70fe3dbe3be2630182b.jpg";
+            $arrayPostData['messages'][0]['type'] = "image";
+            $arrayPostData['messages'][0]['originalContentUrl'] = $image_url;
+            $arrayPostData['messages'][0]['previewImageUrl'] = $image_url;
         }else{
-            $dataTxt => [['type' => 'text', 'text' => $text]];
+            $arrayPostData['messages'][0]['type'] = "text";
+            $arrayPostData['messages'][0]['text'] = $text;
         }
-        $data = [
-            'replyToken' => $reply_token,
-            // 'messages' => [['type' => 'text', 'text' => json_encode($request_array) ]]
-            //'messages' => [['type' => 'text', 'text' => $text]]
-            'messages' => $dataTxt
-        ];
-        $post_body = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
         $send_result = send_reply_message($API_URL.'/reply', $POST_HEADER, $post_body);
 
