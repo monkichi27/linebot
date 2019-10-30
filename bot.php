@@ -97,13 +97,13 @@ if ( sizeof($request_array['events']) > 0 ) {
 
             $arrayPostData['messages'][0]['text'] = $text;
 
-            $arrayPostData1['to']/*  = $id;
+            /* $arrayPostData1['to'] = $id;
             $arrayPostData1['messages'][0]['type'] = "text";
             $arrayPostData1['messages'][0]['text'] = "สวัสดีจ้าาา";
             $arrayPostData1['messages'][1]['type'] = "sticker";
             $arrayPostData1['messages'][1]['packageId'] = "2";
             $arrayPostData1['messages'][1]['stickerId'] = "34";
-            pushMsg($POST_HEADER,$arr */ayPostData1);
+            pushMsg($POST_HEADER,$arrayPostData1); */
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
