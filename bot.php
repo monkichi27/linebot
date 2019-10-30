@@ -102,7 +102,7 @@ if ( sizeof($request_array['events']) > 0 ) {
             $arrayPostData1['messages'][1]['type'] = "sticker";
             $arrayPostData1['messages'][1]['packageId'] = "2";
             $arrayPostData1['messages'][1]['stickerId'] = "34";
-            pushMsg($POST_HEADER,$arrayPostData);
+            pushMsg($POST_HEADER,$arrayPostData1);
         }
         $post_body = json_encode($arrayPostData, JSON_UNESCAPED_UNICODE);
 
