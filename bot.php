@@ -32,7 +32,7 @@ if ( sizeof($request_array['events']) > 0 ) {
         }else{
             $arrayPostData['messages'][0]['type'] = "text";
 
-            $get_data = callAPI('GET', 'https://mos.modernform.co.th/mos-client/item?site=&item=5-M-COS-AC-CM120-BK', false);
+            $get_data = callAPI('GET', 'https://mos.modernform.co.th/mos-client/item?site=MF&item=5-M-COS-AC-CM120-BK', false);
             $response = json_decode($get_data, true);
             $errors = $response['response']['errors'];
             $data = $response['response']['data'][0];
